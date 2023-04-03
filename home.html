@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree&family=Inter:wght@400;600;700&family=League+Spartan:wght@300;400;500;600&family=Montserrat:wght@900&family=Roboto:wght@700;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css"
+    />
+    <link rel="stylesheet" href="./assets/css/styles.css" />
+
+    <title>Lista de Recados</title>
+  </head>
+  <body class="default-gray">
+    <header class="container-fluid clean-gray">
+      <div class="row p-2">
+        <div class="col-12">
+          <nav class="navbar">
+            <form class="d-flex w-100 justify-content-start position-relative">
+              <button class="btn me-2 blue-dark" type="button">Home</button>
+              <button class="btn me-2 blue-dark" type="button">Recados</button>
+              <a href="index.html" class="position-absolute btn-logout end-0"
+                ><i class="bi bi-escape text-white fs-6 btn btn-danger"></i
+              ></a>
+            </form>
+          </nav>
+        </div>
+      </div>
+    </header>
+    <main class="container mt-sm-3 blue-black p-3 rounded-2">
+      <div class="row justify-content-between position-relative">
+        <div
+          class="col-12 table-responsive d-flex justify-content-between mb-3"
+        >
+          <h2>Recados</h2>
+          <button
+            class="btn blue-dark"
+            data-bs-toggle="modal"
+            data-bs-target="#add-modal"
+            type="button"
+          >
+            Criar
+          </button>
+        </div>
+      </div>
+
+      <div class="row g-3 tasks"></div>
+    </main>
+
+    <!-- Modal Add new task -->
+    <div
+      class="modal fade"
+      id="add-modal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content clean-gray text-white">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">
+              Crie seu recado abaixo.
+            </h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form id="form-new-task">
+              <div class="mb-2 position-relative">
+                <label for="password" class="form-label fw-semibold"
+                  >Título</label
+                >
+                <input
+                  type="title"
+                  class="form-control white-gray p-2 border-0 text-white font-14"
+                  id="title"
+                />
+              </div>
+              <div class="mb-2 position-relative">
+                <label for="description" class="form-label fw-semibold font-14"
+                  >Descrição</label
+                >
+                <input
+                  type="text"
+                  class="form-control white-gray p-2 border-0 text-white"
+                  id="description"
+                />
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Cancelar
+                </button>
+                <button type="submit" class="btn btn-primary blue-dark">
+                  Criar
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Update task -->
+    <div
+      class="modal fade"
+      id="edit-modal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content clean-gray text-white">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">
+              Edite o recado abaixo.
+            </h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form id="form-update">
+              <div class="mb-2 position-relative">
+                <label for="new-title" class="form-label fw-semibold"
+                  >Título</label
+                >
+                <input
+                  type="text"
+                  class="form-control white-gray p-2 border-0 text-white font-14"
+                  id="new-title"
+                />
+              </div>
+              <div class="mb-2 position-relative">
+                <label for="new-description" class="form-label fw-semibold"
+                  >Descrição</label
+                >
+                <input
+                  type="text"
+                  class="form-control white-gray p-2 border-0 text-white font-14"
+                  id="new-description"
+                />
+              </div>
+              <div class="modal-footer position-relative">
+                <p
+                  id="id-task-update"
+                  class="font-12 position-absolute start-0"
+                ></p>
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Cancelar
+                </button>
+                <button type="submit" class="btn btn-primary blue-dark">
+                  Atualizar
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="modal fade"
+      id="confirm-modal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content clean-gray text-white">
+          <div class="modal-header">
+            <h1
+              class="modal-title fs-5 modal-title-confirmation"
+              id="exampleModalLabel"
+            >
+              Confirme sua ação.
+            </h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body body-confirmation"></div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-cancel blue-black"
+              data-bs-dismiss="modal"
+            >
+              Cancelar
+            </button>
+            <button type="click" class="btn btn-danger btn-confirmation">
+              Confirmar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toast Alert -->
+    <div id="alerts" class="toast-container toast-alert"></div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./assets/js/home.js"></script>
+  </body>
+</html>
